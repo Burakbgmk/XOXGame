@@ -1,0 +1,24 @@
+body{
+  background-color: #123;
+  color: red;
+}
+
+div.table{
+  display: grid;
+  background-color: rgb(70, 70, 92);
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  padding: 10px;
+  justify-content: center;
+}
+
+div.square{
+  background-color: red;
+  padding: 10px;
+  border: 1px solid black;
+  -webkit-box-shadow: 16px -5px 23px 0px rgba(0,0,0,0.66); 
+  box-shadow: 16px -5px 23px 0px rgba(0,0,0,0.66);
+  font-size: 2rem;
+  text-align: center;
+  color: blue;
+}
