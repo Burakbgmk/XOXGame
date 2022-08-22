@@ -5,19 +5,98 @@ body{
 div.table{
   display: grid;
   background-color: rgb(70, 70, 92);
-  grid-template-columns: 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: 7rem 7rem 7rem;
+  grid-template-rows: 7rem 7rem 7rem;
   padding: 10px;
   justify-content: center;
 }
 
-div.square{
-  background-color: red;
+div.headerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+h1.header{
+  color: rgb(52, 158, 184);
+}
+
+div.square, div.squareFirst, div.squareSecond{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color:rgb(36, 145, 179);
   padding: 10px;
   border: 1px solid black;
   -webkit-box-shadow: 16px -5px 23px 0px rgba(0,0,0,0.66); 
   box-shadow: 16px -5px 23px 0px rgba(0,0,0,0.66);
   font-size: 2rem;
   text-align: center;
-  color: blue;
+  color: #FFF;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #142011, 0 0 30px #188fff, 0 0 40px #ff2718, 0 0 55px #20301b, 0 0 75px #62705e
 }
+
+h2.mark{
+  height: 70px;
+}
+
+div.squareFirst:hover{
+  background-color: green;
+}
+
+div.squareSecond:hover{
+  background-color: red;
+}
+
+div.gameModeButtons{
+  margin-top: 100px;
+  height: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button.gameModeBtn{
+  color: black;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: x-large;
+  background-color:cornflowerblue;
+  height: 150px;
+  width: 300px;
+  flex-grow: 1;
+}
+
+div.resultX{
+  color: green;
+  font-size: xx-large;
+  height: auto;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+div.resultO{
+  color: red;
+  font-size: xx-large;
+  height: auto;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+div.resultTie{
+  color: yellow;
+  font-size: xx-large;
+  height: auto;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+div.result{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+button:hover{
+  background-color: aqua;
+}
+
+
+
+

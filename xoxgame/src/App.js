@@ -13,29 +13,46 @@ const lines = [
 
 function App() {
   const [marks, setMarks] = useState(defaultMarks());
-  const [winner, setWinner] = useState(null);
-  var isSinglePlayer = false;
+  const [winner, setWinner] = useState("");
+  const [gameMode, setGameMode] = useState(0);
+  const [turn, setTurn] = useState('x');
+
+  
+  
+  
   const delay = ms => new Promise(res => setTimeout(res, ms));
   
   const moveOfThePlayer = (index,letter) => {
     let newMarks = marks;
+    if(newMarks[index]!==null) return;
     newMarks[index] = letter;
     setMarks([...newMarks]);
   }
 
-  function handleSquareClick(index){
-    if(winner !== null) return;
+  
+
+  useEffect(() => {
     const isFirstPlayerTurn = marks.filter(mark => mark !== null).length % 2 === 0;
-    
-    if (isFirstPlayerTurn) {
+    if(isFirstPlayerTurn) setTurn('x');
+    else setTurn('o');
+    console.log(turn);
+  },[turn,marks])
+
+  function handleSquareClick(index){
+    if(winner !== "" || gameMode===0) return;
+    if (turn==='x') {
       moveOfThePlayer(index,'x');
       return;
     }
     moveOfThePlayer(index,'o');
   }
+  
+
+   
+
+  
 
   useEffect( ()  => {
-    const isGameOver = winner!==null;
     const isComputerTurn = marks.filter(mark => mark !== null).length % 2 === 1;
 
     const linesThatAre = (a,b,c) => {
@@ -51,8 +68,17 @@ function App() {
 
     const xWon = linesThatAre('x','x','x').length > 0;
     const oWon = linesThatAre('o','o','o').length > 0;
-    if(xWon) setWinner('x');
-    else if(oWon) setWinner('o');
+    if(xWon)
+    {
+      setWinner('x');
+      return;
+    } 
+    else if(oWon)
+    {
+      setWinner('o');
+      return;
+    } 
+
 
     const computerMoveAt = (index) => {
       let newMarks = marks;
@@ -89,38 +115,54 @@ function App() {
       
     }
     
-    if(isComputerTurn && !isGameOver && isSinglePlayer) computerMoves();
+    if(isComputerTurn && gameMode===1 && winner==="") computerMoves();
 
-  },[marks,winner,isSinglePlayer])
+  },[winner,marks,gameMode])
 
 
   
 
   return(
     <main>
+      <div className='headerContainer'>
+        <h1 className='header'>XOX GAME</h1>
+      </div>
       <Table>
         {marks.map((squareMark,index) =>
           <Square 
             mark={squareMark}
+            canbemarked={winner===""&&gameMode!==0}
+            playerturn={gameMode===1?'':(turn)}
             onClick={() => handleSquareClick(index)}
           />
         )}
       </Table>
-      {!!winner && winner === 'x' && (
-        <div className="resultX">
-          {isSinglePlayer?"YOU":"Player 1 is"} WON!
-        </div>
-      )}
-      {!!winner && winner === 'o' && (
-        <div className="resultO">
-          {isSinglePlayer?"YOU LOST!":"Player 2 is WON!"}
-        </div>
-      )}
-      {marks.filter(value => value === null).length === 0 && !winner && (
-        <div>
+      <div className='result'>
+        {!!winner && winner === 'x' && (
+          <div className="resultX">
+            {gameMode===1?"YOU":"Player 1 is"} WON!
+          </div>
+        )}
+        {!!winner && winner === 'o' && (
+          <div className="resultO">
+            {gameMode===1?"YOU LOST!":"Player 2 is WON!"}
+          </div>
+        )}
+        {marks.filter(value => value === null).length === 0 && !winner && (
+        <div className='resultTie'>
           TIE!
         </div>
-      )}
+        )}
+      </div>
+      
+      
+      {gameMode===0 && (
+        <div className="gameModeButtons">
+          <button className='gameModeBtn' onClick={() => {setGameMode(1)}}>SinglePlayer</button>
+          <button className='gameModeBtn' onClick={() => {setGameMode(2)}}>Multiplayer</button>
+        </div>
+      )
+      }
     </main>
   )
   
