@@ -10,6 +10,7 @@ function Square(props) {
         <div className="square" {...props}><h2 className='mark'>{props.mark}</h2></div>
     )
     
+    
 }
 
 export default Square;

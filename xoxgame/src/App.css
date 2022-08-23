@@ -21,6 +21,17 @@ h1.header{
   color: rgb(52, 158, 184);
 }
 
+div.restartContainer{
+  height: 1px;
+}
+
+button.restart{
+  color: black;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: x-large;
+  background-color:cornflowerblue;
+}
+
 div.square, div.squareFirst, div.squareSecond{
   display: flex;
   justify-content:center;
@@ -97,6 +108,13 @@ button:hover{
   background-color: aqua;
 }
 
+button.restart:active {
+  background-color: #188fff;
+  box-shadow: 0 5px #123;
+  transform: translateY(1px);
+}
 
-
-
+button.gameModeBtn:active {
+  background-color: #188fff;
+  box-shadow: 0 5px #123;
+}
