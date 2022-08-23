@@ -11,11 +11,15 @@ const lines = [
   [0,4,8], [2,4,6],
 ];
 
+const defaultWinner = "";
+const defaultGameMode = 0;
+const defaultTurn = 'x';
+
 function App() {
   const [marks, setMarks] = useState(defaultMarks());
-  const [winner, setWinner] = useState("");
-  const [gameMode, setGameMode] = useState(0);
-  const [turn, setTurn] = useState('x');
+  const [winner, setWinner] = useState(defaultWinner);
+  const [gameMode, setGameMode] = useState(defaultGameMode);
+  const [turn, setTurn] = useState(defaultTurn);
 
   
   
@@ -46,12 +50,14 @@ function App() {
     }
     moveOfThePlayer(index,'o');
   }
+
+  function handleRestartClick(){
+    setMarks(defaultMarks());
+    setGameMode(defaultGameMode);
+    setTurn(defaultTurn);
+    setWinner(defaultWinner);
+  }
   
-
-   
-
-  
-
   useEffect( ()  => {
     const isComputerTurn = marks.filter(mark => mark !== null).length % 2 === 1;
 
@@ -124,6 +130,9 @@ function App() {
 
   return(
     <main>
+      <div className='restartContainer'>
+       <button onClick={() => handleRestartClick()} className='restart'>Restart</button>
+      </div>
       <div className='headerContainer'>
         <h1 className='header'>XOX GAME</h1>
       </div>
