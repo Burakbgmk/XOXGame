@@ -1,6 +1,19 @@
 body{
   background-color: #123;
+  cursor: url(../images/xox.png), auto;
+  min-height:100%;
+  margin: 0%;
 }
+html
+{
+  height: 100%;
+  width: 100%;
+  
+}
+
+ body>* :hover{
+  cursor: url(../images/xox.png), auto;
+} 
 
 div.table{
   display: grid;
@@ -19,6 +32,21 @@ div.headerContainer{
 
 h1.header{
   color: rgb(52, 158, 184);
+  
+}
+
+h1, h2, button{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+div.headerButtonsContainer{
+  display: flex;
+  justify-content: space-between;
 }
 
 div.restartContainer{
@@ -26,6 +54,17 @@ div.restartContainer{
 }
 
 button.restart{
+  color: black;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: x-large;
+  background-color:cornflowerblue;
+}
+
+div.quitContainer{
+  height: 1px;
+}
+
+button.quit{
   color: black;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: x-large;
@@ -51,20 +90,28 @@ h2.mark{
   height: 70px;
 }
 
+div.squareFirst{
+  cursor: url(../images/x.png), auto !important;
+}
+
 div.squareFirst:hover{
   background-color: green;
+  cursor: url(../images/x.png), auto !important;
 }
 
 div.squareSecond:hover{
-  background-color: red;
+  background-color: orange;
+  cursor: url(../images/o.png), auto !important;
 }
 
+
+
 div.gameModeButtons{
-  margin-top: 100px;
-  height: 10px;
+  margin-top: 0px;
+  height: auto;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 }
 
@@ -76,6 +123,24 @@ button.gameModeBtn{
   height: 150px;
   width: 300px;
   flex-grow: 1;
+}
+
+div.gameModeContainer{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1.gameModeHeader{
+  color: black;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: x-large;
+  background-color:cornflowerblue;
+  margin: 0;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  align-self: center;
 }
 
 div.resultX{
@@ -114,7 +179,17 @@ button.restart:active {
   transform: translateY(1px);
 }
 
+button.quit:active {
+  background-color: #188fff;
+  box-shadow: 0 5px #123;
+  transform: translateY(1px);
+}
+
 button.gameModeBtn:active {
   background-color: #188fff;
   box-shadow: 0 5px #123;
 }
+
+
+
+
