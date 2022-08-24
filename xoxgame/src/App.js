@@ -24,6 +24,9 @@ function App() {
   const [gameMode, setGameMode] = useState(defaultGameMode);
   const [turn, setTurn] = useState(defaultTurn);
   const [marker, setMarker] = useState(defaultMarker);
+  const [firstName, setFirstName] = useState("Player 1");
+  const [secondName, setSecondName] = useState("Player 2");
+  
 
   
   
@@ -207,12 +210,12 @@ function App() {
       <div className='result'>
         {!!winner && ((winner === 'x' && marker === 'x') || (winner === 'o' && marker === 'o')) && (
           <div className="resultX">
-            {gameMode===1?"YOU":"Player 1 is"} WON!
+            {gameMode===1?"YOU":firstName+" is"} WON!
           </div>
         )}
         {!!winner && ((winner === 'o' && marker === 'x') || (winner === 'x' && marker === 'o')) && (
           <div className="resultO">
-            {gameMode===1?"YOU LOST!":"Player 2 is WON!"}
+            {gameMode===1?"YOU LOST!":secondName+" is WON!"}
           </div>
         )}
         {marks.filter(value => value === null).length === 0 && !winner && (
@@ -223,10 +226,19 @@ function App() {
       </div>
       {gameMode!==0 && marker==='' && (
         <div className='gameModeContainer'>
-          <h1 className='gameModeHeader'>Player 1 :</h1>
+          {
+            gameMode===1
+            ?<input className='singleModeHeader' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
+            :<div className='multiModeHeader'>
+              <input className='firstPlayerInput' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+              <input className='secondPlayerInput' type="text" value={secondName} onChange={(e) => setSecondName(e.target.value)}/>
+              </div>
+          }
+          
           <div className='gameModeButtons'>
-            <button className='gameModeBtn' onClick={() => {setMarker('x')}}>X</button>
-            <button className='gameModeBtn' onClick={() => {setMarker('o')}}>O</button>
+            <button className='gameModeBtn2' onClick={() => {setMarker('o')}}>O</button>
+            <button className='gameModeBtn1' onClick={() => {setMarker('x')}}>X</button>
+            
           </div>
         </div>
         
