@@ -135,28 +135,24 @@ button.gameModeBtn1, button.gameModeBtn2{
   flex-grow: 1;
 }
 
-.gameModeBtn2:hover + button.gameModeBtn1{
-  background-color: orange;
-  order: -1;
+div.gameModeIndicators{
+  margin-top: 0px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
 }
-.gameModeBtn2:hover{
-  background-color: green;
-} 
 
-button.gameModeBtn1{
-  background-color: green;
-  order: -1;
+.gameModeInd{
+  color: black;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: x-large;
+  background-color:cornflowerblue;
+  height: 125px;
+  width: 300px;
+  flex-grow: 1;
 }
-button.gameModeBtn2{
-  background-color: orange;
-  order: 1;
-} 
-
- button.gameModeBtn1:hover{
-  background-color: green;
-  order: -1;
-} 
-
 
 
 div.gameModeContainer{
@@ -196,12 +192,7 @@ div.multiModeHeader{
   flex-grow: 1;
   text-align: center;
 }
-.firstPlayerInput{
-  background-color: green;
-}
-.secondPlayerInput{
-  background-color: orange;
-}
+
 
 
 div.resultX{

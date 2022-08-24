@@ -228,18 +228,23 @@ function App() {
         <div className='gameModeContainer'>
           {
             gameMode===1
-            ?<input className='singleModeHeader' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
+            ?<input className='singleModeHeader' type="text" placeholder='Write Your Name!' onChange={(e) => setFirstName(e.target.value)}></input>
             :<div className='multiModeHeader'>
-              <input className='firstPlayerInput' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-              <input className='secondPlayerInput' type="text" value={secondName} onChange={(e) => setSecondName(e.target.value)}/>
+              <input className='firstPlayerInput' type="text" placeholder="Write First Player Name!"  onChange={(e) => setFirstName(e.target.value)} />
+              <input className='secondPlayerInput' type="text" placeholder="Write Second Player Name!"  onChange={(e) => setSecondName(e.target.value)}/>
               </div>
           }
-          
-          <div className='gameModeButtons'>
-            <button className='gameModeBtn2' onClick={() => {setMarker('o')}}>O</button>
-            <button className='gameModeBtn1' onClick={() => {setMarker('x')}}>X</button>
-            
-          </div>
+          {gameMode===1 && (
+            <div className='gameModeButtons'>
+              <button className='gameModeBtn1' onClick={() => {setMarker('x')}}>X</button>
+              <button className='gameModeBtn2' onClick={() => {setMarker('o')}}>O</button>
+            </div>
+          )}
+          {gameMode===2 && (
+            <div className='gameModeIndicators'>
+              <button className='gameModeInd' onClick={()=>{setMarker('x')}}>Play XOX</button>
+            </div>
+          )}
         </div>
         
       )}
