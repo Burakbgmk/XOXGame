@@ -165,7 +165,7 @@ div.gameModeContainer{
   color: black;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: x-large;
-  background-color:rgb(0, 128, 117);
+  background-color:rgba(100, 148, 237, 0.5);
   margin: 0;
   height: 30px;
   width: 99.3%;

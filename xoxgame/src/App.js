@@ -24,8 +24,8 @@ function App() {
   const [gameMode, setGameMode] = useState(defaultGameMode);
   const [turn, setTurn] = useState(defaultTurn);
   const [marker, setMarker] = useState(defaultMarker);
-  const [firstName, setFirstName] = useState("Player 1");
-  const [secondName, setSecondName] = useState("Player 2");
+  const [firstName, setFirstName] = useState("");
+  const [secondName, setSecondName] = useState("");
   
 
   
@@ -86,10 +86,12 @@ function App() {
     setTurn(defaultTurn);
     setWinner(defaultWinner);
     setMarker(defaultMarker);
+    setFirstName("");
+    setSecondName("");
   }
   
   useEffect( ()  => {
-    if(marks.filter(mark => mark === null).length === 0 || marker === '') return;
+    
     var turnVariable;
     switch(marker){
       case 'o': turnVariable = 0;
@@ -115,14 +117,16 @@ function App() {
     if(xWon)
     {
       setWinner('x');
+      console.log("winner "+winner);
       return;
     } 
     else if(oWon)
     {
       setWinner('o');
+      console.log("winner "+winner);
       return;
     } 
-    
+    if(marks.filter(mark => mark === null).length === 0 || marker === '') return;
 
     const computerMoveAt = (index) => {
       let newMarks = marks;
@@ -191,7 +195,7 @@ function App() {
         <button onClick={() => handleRestartClick()} className='restart'>Restart</button>
         </div>
         <div className='quitContainer'>
-          <button onClick={() => handleQuitClick()} className='quit'>Quit</button>
+          <button onClick={() => handleQuitClick()} className='quit'>Quit to Main Menu</button>
         </div>
       </div>
       <div className='headerContainer'>
@@ -218,7 +222,7 @@ function App() {
             {gameMode===1?"YOU LOST!":secondName+" is WON!"}
           </div>
         )}
-        {marks.filter(value => value === null).length === 0 && !winner && (
+        {marks.filter(value => value === null).length === 0 && winner === "" && (
         <div className='resultTie'>
           TIE!
         </div>
@@ -228,21 +232,21 @@ function App() {
         <div className='gameModeContainer'>
           {
             gameMode===1
-            ?<input className='singleModeHeader' type="text" placeholder='Write Your Name!' onChange={(e) => setFirstName(e.target.value)}></input>
+            ?<div />
             :<div className='multiModeHeader'>
               <input className='firstPlayerInput' type="text" placeholder="Write First Player Name!"  onChange={(e) => setFirstName(e.target.value)} />
               <input className='secondPlayerInput' type="text" placeholder="Write Second Player Name!"  onChange={(e) => setSecondName(e.target.value)}/>
-              </div>
+             </div>
           }
           {gameMode===1 && (
             <div className='gameModeButtons'>
-              <button className='gameModeBtn1' onClick={() => {setMarker('x')}}>X</button>
-              <button className='gameModeBtn2' onClick={() => {setMarker('o')}}>O</button>
+              <button className='gameModeBtn1' onClick={() => {setMarker('x')}}>Play X</button>
+              <button className='gameModeBtn2' onClick={() => {setMarker('o')}}>Play O</button>
             </div>
           )}
           {gameMode===2 && (
             <div className='gameModeIndicators'>
-              <button className='gameModeInd' onClick={()=>{setMarker('x')}}>Play XOX</button>
+              <button className='gameModeInd' onClick={()=>{if(firstName!==''&&secondName!=='') setMarker('x')}}>Play XOX</button>
             </div>
           )}
         </div>
