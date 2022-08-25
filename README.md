@@ -1,7 +1,7 @@
 # XOXGame
 XOX Game with options to play with computer or a friend.
 
-[GamePlay](https://user-images.githubusercontent.com/95534656/186173366-d29b843f-b658-46e9-b08f-cce6d5551237.webm)
+[xox.webm](https://user-images.githubusercontent.com/95534656/186626728-d1a431c6-ed24-46e5-afa3-d5f9d2f0c257.webm)
 
 ## Features
 - **React** is used for functionality and layout.
