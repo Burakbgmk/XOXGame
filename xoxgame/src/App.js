@@ -191,11 +191,16 @@ function App() {
   return(
     <main>
       <div className='headerButtonsContainer'>
+        
         <div className='restartContainer'>
-        <button onClick={() => handleRestartClick()} className='restart'>Restart</button>
+          {marker!=='' && (
+            <button onClick={() => handleRestartClick()} className='restart'>Restart</button>
+          )}
         </div>
         <div className='quitContainer'>
-          <button onClick={() => handleQuitClick()} className='quit'>Quit to Main Menu</button>
+          {gameMode!==0 && (
+            <button onClick={() => handleQuitClick()} className='quit'>Quit to Main Menu</button>
+          )}
         </div>
       </div>
       <div className='headerContainer'>

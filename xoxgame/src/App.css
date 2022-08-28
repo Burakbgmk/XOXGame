@@ -237,11 +237,24 @@ button.quit:active {
   transform: translateY(1px);
 }
 
+button.gameModeBtn1:active {
+  background-color: #188fff;
+  box-shadow: 0 5px #123;
+}
+
+button.gameModeBtn2:active {
+  background-color: #188fff;
+  box-shadow: 0 5px #123;
+}
+
 button.gameModeBtn:active {
   background-color: #188fff;
   box-shadow: 0 5px #123;
 }
 
-
+button.gameModeInd:active {
+  background-color: #188fff;
+  box-shadow: 0 5px #123;
+}
 
 
